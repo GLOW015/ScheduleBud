@@ -7,12 +7,11 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
+import com.example.schedulebud.accountactivity.LoginActivity;
 import com.example.schedulebud.databinding.ActivityMainBinding;
 import com.example.schedulebud.fragments.home.HomeFragment;
 import com.example.schedulebud.fragments.ProfileFragment;
-import com.example.schedulebud.fragments.home.HomeHomeFragment;
 import com.example.schedulebud.fragments.schedule.ScheduleFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -51,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
              * Check for existing login token
              */
             if (prefConfig.loadLoginTokenFromPref(this)==0) {
-                // no login token present
                 Intent intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
             }

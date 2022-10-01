@@ -17,7 +17,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".LoginActivity"
+            android:name=".accountactivity.ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".accountactivity.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".accountactivity.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
