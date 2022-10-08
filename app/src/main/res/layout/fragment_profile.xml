@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.ProfileFragment">
+    tools:context=".main_activity_fragments.ProfileFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -96,6 +96,18 @@
             android:text="Change password"
             app:layout_constraintStart_toStartOf="@+id/profileEmail"
             app:layout_constraintTop_toBottomOf="@+id/profileEmail" />
+
+        <Button
+            android:id="@+id/profileAccountBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue"
+            android:text="LOGIN"
+            app:layout_constraintTop_toBottomOf="@id/profilePasswordTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

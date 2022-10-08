@@ -5,8 +5,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.schedulebud.fragments.home.HomeHomeFragment;
-import com.example.schedulebud.fragments.home.IndexSwapFragment;
+import com.example.schedulebud.main_activity_fragments.home.HomeHomeFragment;
+import com.example.schedulebud.main_activity_fragments.home.IndexSwapFragment;
 
 public class VPAdapter extends FragmentStateAdapter {
     private final Fragment[] mFragments = new Fragment[] {

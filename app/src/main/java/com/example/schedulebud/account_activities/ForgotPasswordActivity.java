@@ -1,4 +1,4 @@
-package com.example.schedulebud.accountactivity;
+package com.example.schedulebud.account_activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,11 +21,8 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         editTextTextEmailAddress = findViewById(R.id.editTextTextEmailAddressForgotPassword);
         resetButton = findViewById(R.id.resetButton);
 
-        resetButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //TODO reset password attempt
-            }
+        resetButton.setOnClickListener(view -> {
+            //TODO reset password attempt
         });
     }
 }

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".main_activity_fragments.home.PostThreadActivity">
+
+    <Button
+        android:id="@+id/homeHomePostBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:backgroundTint="@color/blue"
+        android:text="Post"
+        app:layout_constraintBottom_toBottomOf="@+id/homeHomeCloseBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/homeHomeCloseBtn" />
+
+    <ImageButton
+        android:id="@+id/homeHomeCloseBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_close_48"
+        app:tint="@color/blue" />
+
+    <EditText
+        android:id="@+id/homeHomeTitleEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/light_blue"
+        android:ems="10"
+        android:hint="Add a title (optional)"
+        android:inputType="textPersonName"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeHomeCloseBtn" />
+
+    <EditText
+        android:id="@+id/homeHomeContentEditText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:background="@color/light_blue"
+        android:ems="10"
+        android:gravity="top"
+        android:hint="What's on your mind?"
+        android:inputType="textCapSentences"
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeHomeTitleEditText" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,8 +5,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.schedulebud.fragments.schedule.TimetableFragment;
-import com.example.schedulebud.fragments.schedule.ToDoFragment;
+import com.example.schedulebud.main_activity_fragments.schedule.TimetableFragment;
+import com.example.schedulebud.main_activity_fragments.schedule.ToDoFragment;
 
 public class VPAdapter2 extends FragmentStateAdapter {
     private final Fragment[] mFragments = new Fragment[] {

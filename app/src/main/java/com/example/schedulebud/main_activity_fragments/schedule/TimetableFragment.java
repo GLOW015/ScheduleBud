@@ -1,4 +1,4 @@
-package com.example.schedulebud.fragments.schedule;
+package com.example.schedulebud.main_activity_fragments.schedule;
 
 import android.os.Bundle;
 
@@ -40,16 +40,12 @@ public class TimetableFragment extends Fragment {
         instance = this;
     }
 
-    /**
-     * Returns the fragment instance to access instance methods
-     */
+    //Returns the fragment instance to access instance methods
     public static TimetableFragment getInstance() {
         return instance;
     }
 
-    /**
-     * Changes UI to reflect currently viewed week
-     */
+    //Changes UI to reflect currently viewed week
     public void changeWeek(int weekNumber) {
         switch(weekNumber){
             case 1:

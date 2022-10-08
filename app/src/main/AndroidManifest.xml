@@ -17,13 +17,19 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".accountactivity.ForgotPasswordActivity"
+            android:name=".main_activity_fragments.home.PostThreadActivity"
             android:exported="false" />
         <activity
-            android:name=".accountactivity.RegisterActivity"
+            android:name=".main_activity_fragments.schedule.AddEditToDoTaskActivity"
             android:exported="false" />
         <activity
-            android:name=".accountactivity.LoginActivity"
+            android:name=".account_activities.ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".account_activities.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".account_activities.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

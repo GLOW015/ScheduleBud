@@ -8,11 +8,11 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.schedulebud.accountactivity.LoginActivity;
+import com.example.schedulebud.account_activities.LoginActivity;
 import com.example.schedulebud.databinding.ActivityMainBinding;
-import com.example.schedulebud.fragments.home.HomeFragment;
-import com.example.schedulebud.fragments.ProfileFragment;
-import com.example.schedulebud.fragments.schedule.ScheduleFragment;
+import com.example.schedulebud.main_activity_fragments.home.HomeFragment;
+import com.example.schedulebud.main_activity_fragments.ProfileFragment;
+import com.example.schedulebud.main_activity_fragments.schedule.ScheduleFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,14 +42,10 @@ public class MainActivity extends AppCompatActivity {
 
             return true;
         });
-        /**
-         * Check for no login preference
-         */
+        //Check for no login preference
         if (!prefConfig.loadNoLoginFromPref(this)) {
-            /**
-             * Check for existing login token
-             */
-            if (prefConfig.loadLoginTokenFromPref(this)==0) {
+            //Check for existing login token
+            if (prefConfig.loadLoginTokenFromPref(this).equals("")) {
                 Intent intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
             }

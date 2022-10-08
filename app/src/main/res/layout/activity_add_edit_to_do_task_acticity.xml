@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".main_activity_fragments.schedule.AddEditToDoTaskActivity">
+
+    <Button
+        android:id="@+id/toDoSaveBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:layout_margin="10dp"
+        android:backgroundTint="@color/blue"
+        app:layout_constraintBottom_toBottomOf="@+id/toDoCloseBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toDoCloseBtn" />
+
+    <ImageButton
+        android:id="@+id/toDoCloseBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/white"
+        app:tint="@color/blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_close_48" />
+
+    <TextView
+        android:id="@+id/toDoNameTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textColor="@color/black"
+        android:layout_margin="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toDoCloseBtn" />
+
+    <EditText
+        android:id="@+id/toDoNameEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="e.g. Buy groceries"
+        android:layout_margin="10dp"
+        android:background="@color/light_blue"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toDoNameTitle" />
+
+    <CheckBox
+        android:id="@+id/toDoImportanceCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Important"
+        android:textColor="@color/black"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintBottom_toBottomOf="@+id/toDoDateEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toDoDateTitle" />
+
+    <TextView
+        android:id="@+id/toDoDateTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Deadline"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toDoNameEditText" />
+
+    <EditText
+        android:id="@+id/toDoDateEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/light_blue"
+        android:ems="10"
+        android:hint="No deadline"
+        android:inputType="date"
+        android:padding="5dp"
+        app:layout_constraintEnd_toStartOf="@+id/toDoImportanceCheckBox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toDoDateTitle" />
+
+    <TextView
+        android:id="@+id/toDoRemarksTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remarks"
+        android:textColor="@color/black"
+        android:layout_margin="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toDoDateEditText" />
+
+    <EditText
+        android:id="@+id/toDoRemarksEditText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="top"
+        android:ems="10"
+        android:inputType="textCapSentences"
+        android:hint="Details (e.g. eggs, lettuce, tomatoes)"
+        android:layout_margin="10dp"
+        android:background="@color/light_blue"
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toDoRemarksTitle" />
+</androidx.constraintlayout.widget.ConstraintLayout>
