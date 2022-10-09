@@ -1,4 +1,4 @@
-package com.example.schedulebud;
+package com.example.schedulebud.main_activity_fragments.schedule;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -8,7 +8,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import com.example.schedulebud.main_activity_fragments.schedule.TimetableFragment;
 import com.example.schedulebud.main_activity_fragments.schedule.ToDoFragment;
 
-public class VPAdapter2 extends FragmentStateAdapter {
+public class ScheduleAdapter extends FragmentStateAdapter {
     private final Fragment[] mFragments = new Fragment[] {
             new TimetableFragment(),
             new ToDoFragment(),
@@ -18,7 +18,7 @@ public class VPAdapter2 extends FragmentStateAdapter {
             "To Do"
     };
 
-    public VPAdapter2(FragmentActivity fa){
+    public ScheduleAdapter(FragmentActivity fa){
         super(fa);
     }
 

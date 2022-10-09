@@ -17,6 +17,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".main_activity_fragments.schedule.CopyScheduleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".main_activity_fragments.profile.MyPostsActivity"
+            android:exported="false" />
+        <activity
             android:name=".main_activity_fragments.home.PostThreadActivity"
             android:exported="false" />
         <activity
@@ -40,6 +46,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver android:name=".ReminderBroadcast" />
     </application>
 
 </manifest>

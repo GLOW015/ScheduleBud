@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.schedulebud.R;
-import com.example.schedulebud.VPAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -30,7 +29,7 @@ public class HomeFragment extends Fragment {
                                Bundle savedInstanceState) {
         tabLayout = view.findViewById(R.id.homeTabLayout);
         viewPager2 = view.findViewById(R.id.homeViewPager);
-        viewPager2.setAdapter(new VPAdapter(getActivity()));
-        new TabLayoutMediator(tabLayout, viewPager2, (tab, position) -> tab.setText(((VPAdapter)(viewPager2.getAdapter())).mFragmentNames[position])).attach();
+        viewPager2.setAdapter(new HomeAdapter(getActivity()));
+        new TabLayoutMediator(tabLayout, viewPager2, (tab, position) -> tab.setText(((HomeAdapter)(viewPager2.getAdapter())).mFragmentNames[position])).attach();
     }
 }

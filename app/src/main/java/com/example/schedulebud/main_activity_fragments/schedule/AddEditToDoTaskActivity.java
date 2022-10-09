@@ -2,14 +2,20 @@ package com.example.schedulebud.main_activity_fragments.schedule;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.example.schedulebud.R;
+import com.example.schedulebud.prefConfig;
+import com.google.gson.Gson;
 
 import java.util.Calendar;
 
@@ -17,21 +23,30 @@ public class AddEditToDoTaskActivity extends AppCompatActivity {
 
     private ImageButton toDoCloseBtn;
     private Button toDoSaveBtn;
-    private EditText toDoNameEditText, toDoDateEditText, toDoRemarksEditText;
-    private CheckBox toDoImportanceCheckBox;
+    private TextView toDoDatePickerBtn, toDoTimePickerBtn;
+    private EditText toDoNameEditText, toDoRemarksEditText;
+    private CheckBox toDoDateCheckBox, toDoImportanceCheckBox;
     private boolean add;
     private ToDoTask toDoTask;
+    private DatePickerDialog datePickerDialog;
+    private TimePickerDialog timePickerDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_edit_to_do_task_acticity);
+        setContentView(R.layout.activity_add_edit_to_do_task_activity);
+        initDatePicker();
+        initTimePicker();
         toDoCloseBtn = findViewById(R.id.toDoCloseBtn);
         toDoSaveBtn = findViewById(R.id.toDoSaveBtn);
+        toDoDatePickerBtn = findViewById(R.id.toDoDatePickerBtn);
+        toDoTimePickerBtn = findViewById(R.id.toDoTimePickerBtn);
         toDoNameEditText = findViewById(R.id.toDoNameEditText);
-        toDoDateEditText = findViewById(R.id.toDoDateEditText);
         toDoRemarksEditText = findViewById(R.id.toDoRemarksEditText);
         toDoImportanceCheckBox = findViewById(R.id.toDoImportanceCheckBox);
+        toDoDateCheckBox = findViewById(R.id.toDoDateCheckBox);
+        toDoDatePickerBtn.setText(getTodayDate());
+        toDoTimePickerBtn.setText(getTodayTime());
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -42,9 +57,17 @@ public class AddEditToDoTaskActivity extends AppCompatActivity {
         }
 
         if (!add) {
-            toDoTask = (ToDoTask) bundle.get("toDoTask");
+            String json = (String) bundle.get("toDoTask");
+            Gson gson = new Gson();
+            toDoTask = gson.fromJson(json, ToDoTask.class);
             toDoNameEditText.setText(toDoTask.getName());
-            toDoDateEditText.setText(toDoTask.getDeadline().toString());
+            toDoDateCheckBox.setChecked(toDoTask.isHasDeadline());
+            if (toDoTask.isHasDeadline()) {
+                String deadlineDate = prefConfig.makeDateString(toDoTask.getDeadline().get(Calendar.DAY_OF_MONTH), toDoTask.getDeadline().get(Calendar.MONTH), toDoTask.getDeadline().get(Calendar.YEAR));
+                toDoDatePickerBtn.setText(deadlineDate);
+                String deadlineTime = prefConfig.makeTimeString(toDoTask.getDeadline().get(Calendar.HOUR_OF_DAY), toDoTask.getDeadline().get(Calendar.MINUTE));
+                toDoTimePickerBtn.setText(deadlineTime);
+            }
             toDoRemarksEditText.setText(toDoTask.getRemarks());
             toDoImportanceCheckBox.setChecked(toDoTask.isImportant());
         }
@@ -52,21 +75,117 @@ public class AddEditToDoTaskActivity extends AppCompatActivity {
         toDoCloseBtn.setOnClickListener(view -> finish());
 
         toDoSaveBtn.setOnClickListener(view -> {
-            //TODO change temp
-            Calendar temp = Calendar.getInstance();
-            if (add) {
-                addToDo(toDoNameEditText.getText().toString(), toDoRemarksEditText.getText().toString(), temp, toDoImportanceCheckBox.isChecked());
+            if (toDoDateCheckBox.isChecked()) {
+                Calendar date = Calendar.getInstance();
+                int[] dateInt = prefConfig.getDateFromString(toDoDatePickerBtn.getText().toString());
+                int[] timeInt = prefConfig.getTimeFromString(toDoTimePickerBtn.getText().toString());
+                date.set(Calendar.DAY_OF_MONTH, dateInt[0]);
+                date.set(Calendar.MONTH, dateInt[1]);
+                date.set(Calendar.YEAR, dateInt[2]);
+                date.set(Calendar.HOUR_OF_DAY, timeInt[0]);
+                date.set(Calendar.MINUTE, timeInt[1]);
+                date.set(Calendar.SECOND, 0);
+                date.set(Calendar.MILLISECOND, 0);
+                if (add) {
+                    addToDo(toDoNameEditText.getText().toString(), toDoRemarksEditText.getText().toString(), date, toDoImportanceCheckBox.isChecked(), toDoDateCheckBox.isChecked());
+                } else {
+                    editToDo(toDoTask, toDoNameEditText.getText().toString(), toDoRemarksEditText.getText().toString(), date, toDoImportanceCheckBox.isChecked(), toDoDateCheckBox.isChecked());
+                }
             } else {
-                editToDo(toDoTask, toDoNameEditText.getText().toString(), toDoRemarksEditText.getText().toString(), temp, toDoImportanceCheckBox.isChecked());
+                Calendar date = Calendar.getInstance();
+                date.set(Calendar.DAY_OF_MONTH, 1);
+                date.set(Calendar.MONTH, 0);
+                date.set(Calendar.YEAR, 3000);
+                date.set(Calendar.HOUR_OF_DAY, 0);
+                date.set(Calendar.MINUTE, 0);
+                date.set(Calendar.SECOND, 0);
+                date.set(Calendar.MILLISECOND, 0);
+
+                if (add) {
+                    addToDo(toDoNameEditText.getText().toString(), toDoRemarksEditText.getText().toString(), date, toDoImportanceCheckBox.isChecked(), toDoDateCheckBox.isChecked());
+                } else {
+                    editToDo(toDoTask, toDoNameEditText.getText().toString(), toDoRemarksEditText.getText().toString(), date, toDoImportanceCheckBox.isChecked(), toDoDateCheckBox.isChecked());
+                }
             }
         });
 
+        toDoDatePickerBtn.setOnClickListener(view -> datePickerDialog.show());
+
+        toDoTimePickerBtn.setOnClickListener(view -> timePickerDialog.show());
     }
 
-    private void addToDo(String name, String remarks, Calendar deadline, boolean isImportant) {
-        //TODO configure add todo
+    private void addToDo(String name, String remarks, Calendar deadline, boolean isImportant, boolean hasDeadline) {
+        ToDoTaskList toDoTaskList = prefConfig.loadToDoTaskListFromPref(getApplicationContext());
+        toDoTaskList.getTasks().add(new ToDoTask(name, isImportant, deadline, remarks, false, hasDeadline));
+        toDoTaskList.sortList();
+        prefConfig.saveToDoTaskListPref(getApplicationContext(),toDoTaskList);
+        finish();
     }
-    private void editToDo(ToDoTask toDoTask, String name, String remarks, Calendar deadline, boolean isImportant) {
-        //TODO configure edit todo
+    private void editToDo(ToDoTask toDoTask, String name, String remarks, Calendar deadline, boolean isImportant, boolean hasDeadline) {
+        ToDoTaskList toDoTaskList = prefConfig.loadToDoTaskListFromPref(getApplicationContext());
+        ToDoTask toDoTaskToEdit;
+        for (int i = 0; i < toDoTaskList.getTasks().size(); i++) {
+            toDoTaskToEdit = toDoTaskList.getTasks().get(i);
+            if (toDoTaskToEdit.getName().equals(toDoTask.getName())
+                    && toDoTaskToEdit.getRemarks().equals(toDoTask.getRemarks())
+                    && toDoTaskToEdit.getDeadline().equals(toDoTask.getDeadline())
+                    && toDoTaskToEdit.isImportant()==toDoTask.isImportant()
+                    && toDoTaskToEdit.isNotify()==toDoTask.isNotify()
+                    && toDoTaskToEdit.isHasDeadline()==toDoTask.isHasDeadline()) {
+                toDoTaskToEdit.setName(name);
+                toDoTaskToEdit.setImportant(isImportant);
+                toDoTaskToEdit.setRemarks(remarks);
+                toDoTaskToEdit.setDeadline(deadline);
+                toDoTaskToEdit.setHasDeadline(hasDeadline);
+                toDoTaskList.sortList();
+                prefConfig.saveToDoTaskListPref(getApplicationContext(),toDoTaskList);
+                finish();
+                break;
+            }
+        }
+    }
+
+    private String getTodayDate() {
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        return prefConfig.makeDateString(day, month, year);
+    }
+
+    private String getTodayTime() {
+        Calendar cal = Calendar.getInstance();
+        int hour = cal.get(Calendar.HOUR_OF_DAY);
+        int minute = cal.get(Calendar.MINUTE);
+        return prefConfig.makeTimeString(hour, minute);
+    }
+
+    private void initDatePicker() {
+        DatePickerDialog.OnDateSetListener dateSetListener = (datePicker, year, month, day) -> {
+            String date = prefConfig.makeDateString(day, month, year);
+            toDoDatePickerBtn.setText(date);
+        };
+
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        int style = AlertDialog.THEME_HOLO_LIGHT;
+
+        datePickerDialog = new DatePickerDialog(this, style, dateSetListener, year, month, day);
+    }
+
+    private void initTimePicker() {
+        TimePickerDialog.OnTimeSetListener timeSetListener = (timePicker, hourOfDay, minute) -> {
+            String time = prefConfig.makeTimeString(hourOfDay, minute);
+            toDoTimePickerBtn.setText(time);
+        };
+
+        Calendar cal = Calendar.getInstance();
+        int hour = cal.get(Calendar.HOUR_OF_DAY);
+        int minute = cal.get(Calendar.MINUTE);
+        int style = AlertDialog.THEME_HOLO_LIGHT;
+
+        timePickerDialog = new TimePickerDialog(this, style, timeSetListener, hour, minute, false);
     }
 }

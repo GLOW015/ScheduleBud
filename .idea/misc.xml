@@ -3,23 +3,36 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/drawable/custom_thread_border.xml" value="0.2635" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/drawable/custom_timetable_border_bottom.xml" value="0.2635" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/drawable/custom_timetable_border_full.xml" value="0.2635" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/drawable/custom_timetable_border_left.xml" value="0.2635" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/drawable/custom_timetable_border_middle.xml" value="0.2645" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/drawable/custom_timetable_border_right.xml" value="0.2635" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/drawable/custom_timetable_border_top.xml" value="0.2645" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/drawable/customt_timetable_border_top.xml" value="0.1735" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.2045" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/drawable/ic_baseline_add_48.xml" value="0.2045" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/drawable/ic_baseline_calendar_today_24.xml" value="0.2045" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/drawable/ic_baseline_settings_48.xml" value="0.2045" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/layout/activity_add_edit_to_do_task_acticity.xml" value="0.1983695652173913" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/layout/activity_add_edit_to_do_task_activity.xml" value="0.17054263565891473" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/layout/activity_copy_schedule.xml" value="0.21240942028985507" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/layout/activity_forgot_password.xml" value="0.2453125" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/layout/activity_login.xml" value="0.22327898550724637" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/layout/activity_post_thread.xml" value="0.259375" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/layout/activity_my_posts.xml" value="0.259375" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/layout/activity_post_thread.xml" value="0.17391304347826086" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/layout/activity_register.xml" value="0.2453125" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/layout/fragment_home.xml" value="0.264" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/layout/fragment_home_home.xml" value="0.2453125" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/layout/fragment_index_swap.xml" value="0.259375" />
-        <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/layout/fragment_profile.xml" value="0.1" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/layout/fragment_schedule.xml" value="0.16" />
-        <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/layout/fragment_timetable.xml" value="0.264" />
-        <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/layout/fragment_to_do.xml" value="0.1" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/layout/fragment_timetable.xml" value="0.176" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/layout/fragment_to_do.xml" value="0.2" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/layout/homerecyclerview_row.xml" value="0.264" />
+        <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/layout/todorecyclerview_row.xml" value="0.1" />
         <entry key="..\:/Users/gabri/AndroidStudioProjects/ScheduleBud/app/src/main/res/menu/bottom_nav_menu.xml" value="0.259375" />
       </map>
     </option>

@@ -14,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.schedulebud.R;
-import com.example.schedulebud.VPAdapter2;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -40,8 +39,8 @@ public class ScheduleFragment extends Fragment {
                                Bundle savedInstanceState) {
         tabLayout = view.findViewById(R.id.scheduleTabLayout);
         viewPager2 = view.findViewById(R.id.scheduleViewPager);
-        viewPager2.setAdapter(new VPAdapter2(getActivity()));
-        new TabLayoutMediator(tabLayout, viewPager2, (tab, position) -> tab.setText(((VPAdapter2)(viewPager2.getAdapter())).mFragmentNames[position])).attach();
+        viewPager2.setAdapter(new ScheduleAdapter(getActivity()));
+        new TabLayoutMediator(tabLayout, viewPager2, (tab, position) -> tab.setText(((ScheduleAdapter)(viewPager2.getAdapter())).mFragmentNames[position])).attach();
         weekNumber = 1;
         scheduleSettings = view.findViewById(R.id.scheduleSettings);
         scheduleAdd = view.findViewById(R.id.scheduleAdd);
@@ -51,18 +50,17 @@ public class ScheduleFragment extends Fragment {
         currentScheduleFragment = 1;
 
         scheduleSettings.setOnClickListener(view1 -> {
-            //TODO delete or set timetable
-            Toast.makeText(getContext(),"In development",Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getContext(), CopyScheduleActivity.class);
+            startActivity(intent);
         });
 
-        scheduleAdd.setOnClickListener(view12 -> {
+        scheduleAdd.setOnClickListener(view1 -> {
             switch(currentScheduleFragment) {
                 case 1:
                     //TODO add event
                     Toast.makeText(getContext(),"In development",Toast.LENGTH_SHORT).show();
                     break;
                 case 2:
-                    //TODO add todo
                     Intent intent = new Intent(getContext(), AddEditToDoTaskActivity.class);
                     intent.putExtra("add", true);
                     startActivity(intent);

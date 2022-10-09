@@ -10,6 +10,10 @@ public class ToDoTaskList {
         this.tasks = tasks;
     }
 
+    public ArrayList<ToDoTask> getTasks() {
+        return tasks;
+    }
+
     public void sortList() {
         Collections.sort(tasks);
     }

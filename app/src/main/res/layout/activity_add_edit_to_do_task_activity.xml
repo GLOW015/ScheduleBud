@@ -54,40 +54,76 @@
         app:layout_constraintTop_toBottomOf="@+id/toDoNameTitle" />
 
     <CheckBox
+        android:id="@+id/toDoDateCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="104dp"
+        android:text="Deadline"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toDoNameEditText" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/toDoDateCheckBox"
+        app:layout_constraintEnd_toStartOf="@+id/toDoImportanceCheckBox"
+        app:layout_constraintStart_toEndOf="@+id/toDoDateCheckBox"
+        app:layout_constraintTop_toTopOf="@+id/toDoDateCheckBox">
+
+        <TextView
+            android:id="@+id/toDoDatePickerBtn"
+            android:background="@android:color/transparent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="31 AUG 2022"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/midPoint"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/midPoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"/>
+
+        <TextView
+            android:id="@+id/toDoTimePickerBtn"
+            android:background="@android:color/transparent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:text="00:00"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:gravity="left"
+            app:layout_constraintStart_toEndOf="@id/midPoint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <CheckBox
         android:id="@+id/toDoImportanceCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:text="Important"
         android:textColor="@color/black"
-        app:layout_constraintVertical_bias="0"
-        app:layout_constraintBottom_toBottomOf="@+id/toDoDateEditText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toDoDateTitle" />
-
-    <TextView
-        android:id="@+id/toDoDateTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Deadline"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toDoNameEditText" />
-
-    <EditText
-        android:id="@+id/toDoDateEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@color/light_blue"
-        android:ems="10"
-        android:hint="No deadline"
-        android:inputType="date"
-        android:padding="5dp"
-        app:layout_constraintEnd_toStartOf="@+id/toDoImportanceCheckBox"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toDoDateTitle" />
 
     <TextView
         android:id="@+id/toDoRemarksTitle"
@@ -97,7 +133,7 @@
         android:textColor="@color/black"
         android:layout_margin="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toDoDateEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/toDoDateCheckBox" />
 
     <EditText
         android:id="@+id/toDoRemarksEditText"
@@ -105,7 +141,7 @@
         android:layout_height="0dp"
         android:gravity="top"
         android:ems="10"
-        android:inputType="textCapSentences"
+        android:inputType="textMultiLine"
         android:hint="Details (e.g. eggs, lettuce, tomatoes)"
         android:layout_margin="10dp"
         android:background="@color/light_blue"

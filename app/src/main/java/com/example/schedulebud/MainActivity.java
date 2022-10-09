@@ -11,7 +11,7 @@ import android.os.Bundle;
 import com.example.schedulebud.account_activities.LoginActivity;
 import com.example.schedulebud.databinding.ActivityMainBinding;
 import com.example.schedulebud.main_activity_fragments.home.HomeFragment;
-import com.example.schedulebud.main_activity_fragments.ProfileFragment;
+import com.example.schedulebud.main_activity_fragments.profile.ProfileFragment;
 import com.example.schedulebud.main_activity_fragments.schedule.ScheduleFragment;
 
 public class MainActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.example.schedulebud.main_activity_fragments;
+package com.example.schedulebud.main_activity_fragments.profile;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -36,7 +36,7 @@ public class ProfileFragment extends Fragment {
 
     private ImageView profileImageView;
     private TextView profileName, profileUsername, profileEmail, profilePassword;
-    private Button profileAccountBtn;
+    private Button profileAccountBtn, profileMyPostsBtn;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,8 +59,20 @@ public class ProfileFragment extends Fragment {
         profileEmail = view.findViewById(R.id.profileEmail);
         profilePassword = view.findViewById(R.id.profilePassword);
         profileAccountBtn = view.findViewById(R.id.profileAccountBtn);
+        profileMyPostsBtn = view.findViewById(R.id.profileMyPostsBtn);
         setProfileAccountBtn();
         setNames();
+
+        profileMyPostsBtn.setOnClickListener(view1 -> {
+            String token = prefConfig.loadLoginTokenFromPref(getContext());
+            if (token.equals("")) {
+                Toast.makeText(getContext(),"Please login", Toast.LENGTH_SHORT).show();
+            } else {
+                Intent intent = new Intent(getContext(), MyPostsActivity.class);
+                intent.putExtra("token", token);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -127,7 +139,7 @@ public class ProfileFragment extends Fragment {
         }) {
 
             @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
+            public Map<String, String> getHeaders() {
                 Map<String,String> params = new HashMap<>();
                 params.put("auth-token",token);
                 return params;

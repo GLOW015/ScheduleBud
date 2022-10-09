@@ -1,4 +1,4 @@
-package com.example.schedulebud;
+package com.example.schedulebud.main_activity_fragments.home;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -8,7 +8,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import com.example.schedulebud.main_activity_fragments.home.HomeHomeFragment;
 import com.example.schedulebud.main_activity_fragments.home.IndexSwapFragment;
 
-public class VPAdapter extends FragmentStateAdapter {
+public class HomeAdapter extends FragmentStateAdapter {
     private final Fragment[] mFragments = new Fragment[] {
             new HomeHomeFragment(),
             new IndexSwapFragment(),
@@ -18,7 +18,7 @@ public class VPAdapter extends FragmentStateAdapter {
             "Index Swap"
     };
 
-    public VPAdapter(FragmentActivity fa){
+    public HomeAdapter(FragmentActivity fa){
         super(fa);
     }
 
