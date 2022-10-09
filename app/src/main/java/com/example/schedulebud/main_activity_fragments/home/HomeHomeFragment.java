@@ -94,9 +94,9 @@ public class HomeHomeFragment extends Fragment {
                             int is_anonymous = Integer.parseInt(backendThread.get("is_anonymous").toString());
                             BackendThreadInfo backendThreadInfo = new BackendThreadInfo(thread_id, user_id, content, is_anonymous);
                             backendThreadInfoArrayList.add(backendThreadInfo);
-                            updateHomeRecyclerView(backendThreadInfoArrayList);
                         }
                     }
+                    updateHomeRecyclerView(backendThreadInfoArrayList);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

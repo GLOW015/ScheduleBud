@@ -40,7 +40,7 @@
                             android:id="@+id/timetableMonth"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Aug"
+                            android:text="AUG"
                             android:textSize="16dp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"

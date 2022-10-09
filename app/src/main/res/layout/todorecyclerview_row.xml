@@ -29,32 +29,23 @@
             android:orientation="vertical"
             android:layout_marginHorizontal="10dp">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/toDoTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:maxWidth="250dp"
+                android:text="Title"
+                android:textSize="16dp"
+                android:textColor="@color/black"/>
 
-                <TextView
-                    android:id="@+id/toDoTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:maxWidth="250dp"
-                    android:text="Title"
-                    android:textSize="16dp"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:id="@+id/toDoDeadline"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:maxWidth="250dp"
-                    android:layout_gravity="center"
-                    android:text="Deadline"
-                    android:textSize="12dp"
-                    android:textColor="@color/black"
-                    android:layout_marginHorizontal="10dp"/>
-
-            </LinearLayout>
+            <TextView
+                android:id="@+id/toDoDeadline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="250dp"
+                android:text="Deadline"
+                android:textSize="12dp"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/toDoDetails"

@@ -1,5 +1,6 @@
 package com.example.schedulebud.main_activity_fragments.schedule;
 
+import android.app.Dialog;
 import android.os.Bundle;
 
 import androidx.core.content.res.ResourcesCompat;
@@ -15,6 +16,7 @@ import com.example.schedulebud.R;
 import com.example.schedulebud.prefConfig;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class TimetableFragment extends Fragment {
 
@@ -70,6 +72,7 @@ public class TimetableFragment extends Fragment {
             }
         }
         updateTimetable();
+        changeWeek(1);
     }
 
     //Returns the fragment instance to access instance methods
@@ -79,130 +82,20 @@ public class TimetableFragment extends Fragment {
 
     //Changes UI to reflect currently viewed week
     public void changeWeek(int weekNumber) {
-        switch(weekNumber){
-            case 1:
-                timetableMonth.setText("Aug");
-                timetableDateMonday.setText("8");
-                timetableDateTuesday.setText("9");
-                timetableDateWednesday.setText("10");
-                timetableDateThursday.setText("11");
-                timetableDateFriday.setText("12");
-                break;
-            case 2:
-                timetableMonth.setText("Aug");
-                timetableDateMonday.setText("15");
-                timetableDateTuesday.setText("16");
-                timetableDateWednesday.setText("17");
-                timetableDateThursday.setText("18");
-                timetableDateFriday.setText("19");
-                break;
-            case 3:
-                timetableMonth.setText("Aug");
-                timetableDateMonday.setText("22");
-                timetableDateTuesday.setText("22");
-                timetableDateWednesday.setText("23");
-                timetableDateThursday.setText("24");
-                timetableDateFriday.setText("25");
-                break;
-            case 4:
-                timetableMonth.setText("Aug");
-                timetableDateMonday.setText("29");
-                timetableDateTuesday.setText("30");
-                timetableDateWednesday.setText("31");
-                timetableDateThursday.setText("1");
-                timetableDateFriday.setText("2");
-                break;
-            case 5:
-                timetableMonth.setText("Sep");
-                timetableDateMonday.setText("5");
-                timetableDateTuesday.setText("6");
-                timetableDateWednesday.setText("7");
-                timetableDateThursday.setText("8");
-                timetableDateFriday.setText("9");
-                break;
-            case 6:
-                timetableMonth.setText("Sep");
-                timetableDateMonday.setText("12");
-                timetableDateTuesday.setText("13");
-                timetableDateWednesday.setText("14");
-                timetableDateThursday.setText("15");
-                timetableDateFriday.setText("16");
-                break;
-            case 7:
-                timetableMonth.setText("Sep");
-                timetableDateMonday.setText("19");
-                timetableDateTuesday.setText("20");
-                timetableDateWednesday.setText("21");
-                timetableDateThursday.setText("22");
-                timetableDateFriday.setText("23");
-                break;
-            case 8:
-                timetableMonth.setText("Sep");
-                timetableDateMonday.setText("26");
-                timetableDateTuesday.setText("27");
-                timetableDateWednesday.setText("28");
-                timetableDateThursday.setText("29");
-                timetableDateFriday.setText("30");
-                break;
-            case 9:
-                timetableMonth.setText("Oct");
-                timetableDateMonday.setText("3");
-                timetableDateTuesday.setText("4");
-                timetableDateWednesday.setText("5");
-                timetableDateThursday.setText("6");
-                timetableDateFriday.setText("7");
-                break;
-            case 10:
-                timetableMonth.setText("Oct");
-                timetableDateMonday.setText("10");
-                timetableDateTuesday.setText("11");
-                timetableDateWednesday.setText("12");
-                timetableDateThursday.setText("13");
-                timetableDateFriday.setText("14");
-                break;
-            case 11:
-                timetableMonth.setText("Oct");
-                timetableDateMonday.setText("17");
-                timetableDateTuesday.setText("18");
-                timetableDateWednesday.setText("19");
-                timetableDateThursday.setText("20");
-                timetableDateFriday.setText("21");
-                break;
-            case 12:
-                timetableMonth.setText("Oct");
-                timetableDateMonday.setText("24");
-                timetableDateTuesday.setText("25");
-                timetableDateWednesday.setText("26");
-                timetableDateThursday.setText("27");
-                timetableDateFriday.setText("28");
-                break;
-            case 13:
-                timetableMonth.setText("Oct");
-                timetableDateMonday.setText("31");
-                timetableDateTuesday.setText("1");
-                timetableDateWednesday.setText("2");
-                timetableDateThursday.setText("3");
-                timetableDateFriday.setText("4");
-                break;
-            case 14:
-                timetableMonth.setText("Nov");
-                timetableDateMonday.setText("7");
-                timetableDateTuesday.setText("8");
-                timetableDateWednesday.setText("9");
-                timetableDateThursday.setText("10");
-                timetableDateFriday.setText("11");
-                break;
-            case 15:
-                timetableMonth.setText("Nov");
-                timetableDateMonday.setText("14");
-                timetableDateTuesday.setText("15");
-                timetableDateWednesday.setText("16");
-                timetableDateThursday.setText("17");
-                timetableDateFriday.setText("18");
-                break;
-            default:
-                break;
-        }
+        Calendar date = Calendar.getInstance();
+        date.set(2022, 7, 8);
+        int addWeek = 7 * (weekNumber - 1);
+        date.add(Calendar.DATE, addWeek);
+        timetableMonth.setText(prefConfig.getMonthFormat(date.get(Calendar.MONTH)));
+        timetableDateMonday.setText(Integer.toString(date.get(Calendar.DAY_OF_MONTH)));
+        date.add(Calendar.DATE, 1);
+        timetableDateTuesday.setText(Integer.toString(date.get(Calendar.DAY_OF_MONTH)));
+        date.add(Calendar.DATE, 1);
+        timetableDateWednesday.setText(Integer.toString(date.get(Calendar.DAY_OF_MONTH)));
+        date.add(Calendar.DATE, 1);
+        timetableDateThursday.setText(Integer.toString(date.get(Calendar.DAY_OF_MONTH)));
+        date.add(Calendar.DATE, 1);
+        timetableDateFriday.setText(Integer.toString(date.get(Calendar.DAY_OF_MONTH)));
     }
 
     private void updateTimetable() {
@@ -211,6 +104,13 @@ public class TimetableFragment extends Fragment {
             for (int j = 0; j < schedule.get(i).size(); j++) {
                 TextView timeslot = (TextView) linearLayoutArrayList.get(i).getChildAt(j+1);
                 if (!schedule.get(i).get(j).equals("")) {
+                    timeslot.setOnClickListener(view -> {
+                        EditEventDialogFragment dialogFragment = new EditEventDialogFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("eventDetails",timeslot.getText().toString());
+                        dialogFragment.setArguments(bundle);
+                        dialogFragment.show(getActivity().getSupportFragmentManager(),"Edit Event Dialog");
+                    });
                     //TODO set onClick to handle edit and delete events
                     timeslot.setText(schedule.get(i).get(j));
                     timeslot.setTextColor(ResourcesCompat.getColor(getResources(), R.color.light_blue, null));
@@ -242,6 +142,7 @@ public class TimetableFragment extends Fragment {
                 } else {
                     timeslot.setText("");
                     timeslot.setBackground(null);
+                    timeslot.setOnClickListener(null);
                 }
             }
         }

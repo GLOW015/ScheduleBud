@@ -35,8 +35,6 @@ public class AddEditToDoTaskActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_edit_to_do_task_activity);
-        initDatePicker();
-        initTimePicker();
         toDoCloseBtn = findViewById(R.id.toDoCloseBtn);
         toDoSaveBtn = findViewById(R.id.toDoSaveBtn);
         toDoDatePickerBtn = findViewById(R.id.toDoDatePickerBtn);
@@ -56,6 +54,13 @@ public class AddEditToDoTaskActivity extends AppCompatActivity {
             finish();
         }
 
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        int hour = cal.get(Calendar.HOUR_OF_DAY);
+        int minute = cal.get(Calendar.MINUTE);
+
         if (!add) {
             String json = (String) bundle.get("toDoTask");
             Gson gson = new Gson();
@@ -63,14 +68,22 @@ public class AddEditToDoTaskActivity extends AppCompatActivity {
             toDoNameEditText.setText(toDoTask.getName());
             toDoDateCheckBox.setChecked(toDoTask.isHasDeadline());
             if (toDoTask.isHasDeadline()) {
-                String deadlineDate = prefConfig.makeDateString(toDoTask.getDeadline().get(Calendar.DAY_OF_MONTH), toDoTask.getDeadline().get(Calendar.MONTH), toDoTask.getDeadline().get(Calendar.YEAR));
+                year = toDoTask.getDeadline().get(Calendar.YEAR);
+                month = toDoTask.getDeadline().get(Calendar.MONTH);
+                day = toDoTask.getDeadline().get(Calendar.DAY_OF_MONTH);
+                String deadlineDate = prefConfig.makeDateString(day, month, year);
                 toDoDatePickerBtn.setText(deadlineDate);
-                String deadlineTime = prefConfig.makeTimeString(toDoTask.getDeadline().get(Calendar.HOUR_OF_DAY), toDoTask.getDeadline().get(Calendar.MINUTE));
+                hour = toDoTask.getDeadline().get(Calendar.HOUR_OF_DAY);
+                minute = toDoTask.getDeadline().get(Calendar.MINUTE);
+                String deadlineTime = prefConfig.makeTimeString(hour, minute);
                 toDoTimePickerBtn.setText(deadlineTime);
             }
             toDoRemarksEditText.setText(toDoTask.getRemarks());
             toDoImportanceCheckBox.setChecked(toDoTask.isImportant());
         }
+
+        initDatePicker(year, month, day);
+        initTimePicker(hour, minute);
 
         toDoCloseBtn.setOnClickListener(view -> finish());
 
@@ -160,32 +173,21 @@ public class AddEditToDoTaskActivity extends AppCompatActivity {
         return prefConfig.makeTimeString(hour, minute);
     }
 
-    private void initDatePicker() {
-        DatePickerDialog.OnDateSetListener dateSetListener = (datePicker, year, month, day) -> {
-            String date = prefConfig.makeDateString(day, month, year);
+    private void initDatePicker(int year, int month, int day) {
+        DatePickerDialog.OnDateSetListener dateSetListener = (datePicker, yr, mth, d) -> {
+            String date = prefConfig.makeDateString(d, mth, yr);
             toDoDatePickerBtn.setText(date);
         };
-
-        Calendar cal = Calendar.getInstance();
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
-        int day = cal.get(Calendar.DAY_OF_MONTH);
         int style = AlertDialog.THEME_HOLO_LIGHT;
-
         datePickerDialog = new DatePickerDialog(this, style, dateSetListener, year, month, day);
     }
 
-    private void initTimePicker() {
-        TimePickerDialog.OnTimeSetListener timeSetListener = (timePicker, hourOfDay, minute) -> {
-            String time = prefConfig.makeTimeString(hourOfDay, minute);
+    private void initTimePicker(int hour, int minute) {
+        TimePickerDialog.OnTimeSetListener timeSetListener = (timePicker, hr, min) -> {
+            String time = prefConfig.makeTimeString(hr, min);
             toDoTimePickerBtn.setText(time);
         };
-
-        Calendar cal = Calendar.getInstance();
-        int hour = cal.get(Calendar.HOUR_OF_DAY);
-        int minute = cal.get(Calendar.MINUTE);
         int style = AlertDialog.THEME_HOLO_LIGHT;
-
         timePickerDialog = new TimePickerDialog(this, style, timeSetListener, hour, minute, false);
     }
 }

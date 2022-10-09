@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context=".main_activity_fragments.home.ViewThreadActivity">
+
+    <ImageButton
+        android:id="@+id/viewThreadBackBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:tint="@color/blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_48" />
+
+    <ImageView
+        android:id="@+id/viewThreadProfilePic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:tint="@color/blue"
+        app:layout_constraintBottom_toBottomOf="@+id/viewThreadBackBtn"
+        app:layout_constraintStart_toEndOf="@+id/viewThreadBackBtn"
+        app:layout_constraintTop_toTopOf="@+id/viewThreadBackBtn"
+        app:srcCompat="@drawable/ic_baseline_person_48" />
+
+    <TextView
+        android:id="@+id/viewThreadPosterName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="Name"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/viewThreadProfilePic"
+        app:layout_constraintTop_toTopOf="@+id/viewThreadProfilePic" />
+
+    <TextView
+        android:id="@+id/viewThreadPostedDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:text="Date Posted"
+        android:textSize="14dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/viewThreadProfilePic"
+        app:layout_constraintStart_toEndOf="@+id/viewThreadProfilePic"
+        app:layout_constraintStart_toStartOf="@+id/viewThreadPosterName"
+        app:layout_constraintTop_toBottomOf="@+id/viewThreadPosterName" />
+
+    <TextView
+        android:id="@+id/viewThreadTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Title"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewThreadBackBtn" />
+
+    <TextView
+        android:id="@+id/viewThreadContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Content"
+        android:textSize="12dp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewThreadTitle" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/viewThreadRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginVertical="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/viewThreadCommentEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewThreadContent" />
+
+    <ImageButton
+        android:id="@+id/viewThreadLikeBtn"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_gravity="center"
+        android:background="@color/white"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/heart_outline" />
+
+    <TextView
+        android:id="@+id/viewThreadLikeCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="0"
+        android:textColor="@color/black"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/viewThreadLikeBtn"
+        app:layout_constraintStart_toEndOf="@+id/viewThreadLikeBtn"
+        app:layout_constraintTop_toTopOf="@+id/viewThreadLikeBtn" />
+
+    <ImageView
+        android:id="@+id/viewThreadCommentPic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/viewThreadLikeBtn"
+        app:layout_constraintStart_toEndOf="@+id/viewThreadLikeCount"
+        app:layout_constraintTop_toTopOf="@+id/viewThreadLikeBtn"
+        app:srcCompat="@drawable/ic_baseline_chat_bubble_outline_24" />
+
+    <EditText
+        android:id="@+id/viewThreadCommentEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Comment"
+        android:padding="3dp"
+        android:background="@color/light_blue"
+        app:layout_constraintBottom_toBottomOf="@+id/viewThreadCommentPic"
+        app:layout_constraintEnd_toStartOf="@+id/viewThreadCommentBtn"
+        app:layout_constraintStart_toEndOf="@+id/viewThreadCommentPic"
+        app:layout_constraintTop_toTopOf="@+id/viewThreadCommentPic" />
+
+    <ImageButton
+        android:id="@+id/viewThreadCommentBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        app:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_done_24" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

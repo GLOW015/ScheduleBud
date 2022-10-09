@@ -183,7 +183,9 @@ public class prefConfig {
     public static String makeTimeString(int hour, int minute) {
         String minuteString = "00";
         if (minute < 10) {
-           minuteString= "0"+minute;
+            minuteString = "0"+minute;
+        } else {
+            minuteString = String.valueOf(minute);
         }
         return hour + ":" + minuteString;
     }

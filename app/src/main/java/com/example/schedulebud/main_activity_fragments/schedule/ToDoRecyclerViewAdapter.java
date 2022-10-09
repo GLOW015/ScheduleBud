@@ -107,14 +107,23 @@ public class ToDoRecyclerViewAdapter extends RecyclerView.Adapter<ToDoRecyclerVi
                 updateNotifyButton(toDoTask, holder);
                 Toast.makeText(context, "Reminder cancelled", Toast.LENGTH_SHORT).show();
                 NotificationUtils _notificationUtils = new NotificationUtils(context);
+                long currentTime = Calendar.getInstance().getTimeInMillis();
                 long toDoTaskTime = toDoTask.getDeadline().getTimeInMillis();
                 long oneHourBefore = toDoTaskTime - 1000*60*60;
                 long twelveHoursBefore = toDoTaskTime - 1000*60*60*12;
                 long oneDayBefore = toDoTaskTime - 1000*60*60*24;
-                _notificationUtils.setReminder(toDoTaskTime, toDoTask.getName()+" NOW", toDoTask.getRemarks(), toDoTask.getCounterNum());
-                _notificationUtils.cancelReminder(oneHourBefore, toDoTask.getName()+" 1h", toDoTask.getRemarks(), toDoTask.getCounterNum()+1);
-                _notificationUtils.cancelReminder(twelveHoursBefore, toDoTask.getName()+" 12h", toDoTask.getRemarks(), toDoTask.getCounterNum()+2);
-                _notificationUtils.cancelReminder(oneDayBefore, toDoTask.getName()+" 1d", toDoTask.getRemarks(), toDoTask.getCounterNum()+3);
+                if (toDoTaskTime > currentTime) {
+                    _notificationUtils.setReminder(toDoTaskTime, toDoTask.getName() + " NOW", toDoTask.getRemarks(), toDoTask.getCounterNum());
+                }
+                if (oneHourBefore > currentTime) {
+                    _notificationUtils.cancelReminder(oneHourBefore, toDoTask.getName() + " 1h", toDoTask.getRemarks(), toDoTask.getCounterNum() + 1);
+                }
+                if (twelveHoursBefore > currentTime) {
+                    _notificationUtils.cancelReminder(twelveHoursBefore, toDoTask.getName() + " 12h", toDoTask.getRemarks(), toDoTask.getCounterNum() + 2);
+                }
+                if (oneDayBefore > currentTime) {
+                    _notificationUtils.cancelReminder(oneDayBefore, toDoTask.getName() + " 1d", toDoTask.getRemarks(), toDoTask.getCounterNum() + 3);
+                }
             });
         } else {
             holder.toDoNotifyBtn.setImageResource(R.drawable.ic_baseline_alarm_off_24);
@@ -125,14 +134,23 @@ public class ToDoRecyclerViewAdapter extends RecyclerView.Adapter<ToDoRecyclerVi
                 updateNotifyButton(toDoTask, holder);
                 Toast.makeText(context, "Reminder set", Toast.LENGTH_SHORT).show();
                 NotificationUtils _notificationUtils = new NotificationUtils(context);
+                long currentTime = Calendar.getInstance().getTimeInMillis();
                 long toDoTaskTime = toDoTask.getDeadline().getTimeInMillis();
                 long oneHourBefore = toDoTaskTime - 1000*60*60;
                 long twelveHoursBefore = toDoTaskTime - 1000*60*60*12;
                 long oneDayBefore = toDoTaskTime - 1000*60*60*24;
-                _notificationUtils.setReminder(toDoTaskTime, toDoTask.getName()+" NOW", toDoTask.getRemarks(), toDoTask.getCounterNum());
-                _notificationUtils.setReminder(oneHourBefore, toDoTask.getName()+" 1h", toDoTask.getRemarks(), toDoTask.getCounterNum()+1);
-                _notificationUtils.setReminder(twelveHoursBefore, toDoTask.getName()+" 12h", toDoTask.getRemarks(), toDoTask.getCounterNum()+2);
-                _notificationUtils.setReminder(oneDayBefore, toDoTask.getName()+" 1d", toDoTask.getRemarks(), toDoTask.getCounterNum()+3);
+                if (toDoTaskTime > currentTime) {
+                    _notificationUtils.setReminder(toDoTaskTime, toDoTask.getName()+" NOW", toDoTask.getRemarks(), toDoTask.getCounterNum());
+                }
+                if (oneHourBefore > currentTime) {
+                    _notificationUtils.setReminder(oneHourBefore, toDoTask.getName() + " 1h", toDoTask.getRemarks(), toDoTask.getCounterNum() + 1);
+                }
+                if (twelveHoursBefore > currentTime) {
+                    _notificationUtils.setReminder(twelveHoursBefore, toDoTask.getName() + " 12h", toDoTask.getRemarks(), toDoTask.getCounterNum() + 2);
+                }
+                if (oneDayBefore > currentTime) {
+                    _notificationUtils.setReminder(oneDayBefore, toDoTask.getName() + " 1d", toDoTask.getRemarks(), toDoTask.getCounterNum() + 3);
+                }
             });
         }
     }

@@ -17,6 +17,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".main_activity_fragments.home.ViewThreadActivity"
+            android:exported="false" />
+        <activity
+            android:name=".main_activity_fragments.schedule.EditEventActivity"
+            android:exported="false" />
+        <activity
             android:name=".main_activity_fragments.schedule.CopyScheduleActivity"
             android:exported="false" />
         <activity
