@@ -111,7 +111,6 @@ public class TimetableFragment extends Fragment {
                         dialogFragment.setArguments(bundle);
                         dialogFragment.show(getActivity().getSupportFragmentManager(),"Edit Event Dialog");
                     });
-                    //TODO set onClick to handle edit and delete events
                     timeslot.setText(schedule.get(i).get(j));
                     timeslot.setTextColor(ResourcesCompat.getColor(getResources(), R.color.light_blue, null));
                     if (j - 1 < 0) {

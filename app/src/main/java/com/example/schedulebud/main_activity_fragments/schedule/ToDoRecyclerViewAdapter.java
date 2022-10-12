@@ -113,7 +113,7 @@ public class ToDoRecyclerViewAdapter extends RecyclerView.Adapter<ToDoRecyclerVi
                 long twelveHoursBefore = toDoTaskTime - 1000*60*60*12;
                 long oneDayBefore = toDoTaskTime - 1000*60*60*24;
                 if (toDoTaskTime > currentTime) {
-                    _notificationUtils.setReminder(toDoTaskTime, toDoTask.getName() + " NOW", toDoTask.getRemarks(), toDoTask.getCounterNum());
+                    _notificationUtils.cancelReminder(toDoTaskTime, toDoTask.getName() + " NOW", toDoTask.getRemarks(), toDoTask.getCounterNum());
                 }
                 if (oneHourBefore > currentTime) {
                     _notificationUtils.cancelReminder(oneHourBefore, toDoTask.getName() + " 1h", toDoTask.getRemarks(), toDoTask.getCounterNum() + 1);

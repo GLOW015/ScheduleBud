@@ -173,7 +173,7 @@ public class prefConfig {
     }
 
     public static String makeDateString(int day, int month, int year) {
-        String dayString = "01";
+        String dayString = Integer.toString(day);
         if (day < 10) {
             dayString= "0"+day;
         }
@@ -181,11 +181,9 @@ public class prefConfig {
     }
 
     public static String makeTimeString(int hour, int minute) {
-        String minuteString = "00";
+        String minuteString = String.valueOf(minute);
         if (minute < 10) {
             minuteString = "0"+minute;
-        } else {
-            minuteString = String.valueOf(minute);
         }
         return hour + ":" + minuteString;
     }

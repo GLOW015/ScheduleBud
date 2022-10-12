@@ -12,7 +12,9 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.schedulebud.NotificationUtils;
 import com.example.schedulebud.R;
 import com.example.schedulebud.prefConfig;
 import com.google.gson.Gson;
@@ -150,8 +152,10 @@ public class AddEditToDoTaskActivity extends AppCompatActivity {
                 toDoTaskToEdit.setRemarks(remarks);
                 toDoTaskToEdit.setDeadline(deadline);
                 toDoTaskToEdit.setHasDeadline(hasDeadline);
+                toDoTaskToEdit.setNotify(false);
                 toDoTaskList.sortList();
                 prefConfig.saveToDoTaskListPref(getApplicationContext(),toDoTaskList);
+                removeNotificationsAfterEdit(toDoTask);
                 finish();
                 break;
             }
@@ -189,5 +193,29 @@ public class AddEditToDoTaskActivity extends AppCompatActivity {
         };
         int style = AlertDialog.THEME_HOLO_LIGHT;
         timePickerDialog = new TimePickerDialog(this, style, timeSetListener, hour, minute, false);
+    }
+
+    private void removeNotificationsAfterEdit(ToDoTask toDoTask) {
+        if (toDoTask.isNotify()) {
+            Toast.makeText(getApplicationContext(), "Reminder cancelled after edit", Toast.LENGTH_SHORT).show();
+            NotificationUtils _notificationUtils = new NotificationUtils(getApplicationContext());
+            long currentTime = Calendar.getInstance().getTimeInMillis();
+            long toDoTaskTime = toDoTask.getDeadline().getTimeInMillis();
+            long oneHourBefore = toDoTaskTime - 1000*60*60;
+            long twelveHoursBefore = toDoTaskTime - 1000*60*60*12;
+            long oneDayBefore = toDoTaskTime - 1000*60*60*24;
+            if (toDoTaskTime > currentTime) {
+                _notificationUtils.cancelReminder(toDoTaskTime, toDoTask.getName() + " NOW", toDoTask.getRemarks(), toDoTask.getCounterNum());
+            }
+            if (oneHourBefore > currentTime) {
+                _notificationUtils.cancelReminder(oneHourBefore, toDoTask.getName() + " 1h", toDoTask.getRemarks(), toDoTask.getCounterNum() + 1);
+            }
+            if (twelveHoursBefore > currentTime) {
+                _notificationUtils.cancelReminder(twelveHoursBefore, toDoTask.getName() + " 12h", toDoTask.getRemarks(), toDoTask.getCounterNum() + 2);
+            }
+            if (oneDayBefore > currentTime) {
+                _notificationUtils.cancelReminder(oneDayBefore, toDoTask.getName() + " 1d", toDoTask.getRemarks(), toDoTask.getCounterNum() + 3);
+            }
+        }
     }
 }
